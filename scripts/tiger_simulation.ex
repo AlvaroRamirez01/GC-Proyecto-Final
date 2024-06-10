@@ -22,7 +22,7 @@ defmodule TigerSimulation do
   end
 
   @impl true
-  def terminate?(_population, generation, _opts \\ []), do: generation == 1_000
+  def terminate?(_population, generation, _opts \\ []), do: generation == 150
 
   def average_tiger(population) do
     genes = Enum.map(population, & &1.genes)
@@ -45,21 +45,36 @@ end
 
 tiger =
   Genetics.run(TigerSimulation,
-    population_size: 20,
+    population_size: 100,
     selection_rate: 0.9,
-    mutation_rate: 0.1,
-    statistics: %{average_tiger: &TigerSimulation.average_tiger/1}
+    mutation_rate: 0.1
+    # statistics: %{average_tiger: &TigerSimulation.average_tiger/1}
   )
 
 IO.write("\n")
 IO.inspect(tiger)
 
-{_, zero_gen_stats} = Utilities.Statistics.lookup(0)
-{_, fivehundred_gen_stats} = Utilities.Statistics.lookup(500)
-{_, onethousand_gen_stats} = Utilities.Statistics.lookup(1000)
-IO.inspect(zero_gen_stats.average_tiger)
-IO.inspect(fivehundred_gen_stats.average_tiger)
-IO.inspect(onethousand_gen_stats.average_tiger)
+stats =
+  :ets.tab2list(:statistics)
+  |> Enum.map(fn {gen, stats} -> [gen, stats.mean_fitness] end)
 
-genealogy = Utilities.Genealogy.get_tree()
-IO.inspect(Graph.vertices(genealogy))
+
+{:ok, _cmd} =
+  Gnuplot.plot([
+    ~w(set autoscale)a,
+    [:set, :title, "mean fitness versus generation"],
+    [:plot, "-", :with, :points]
+  ], [stats])
+
+# {_, zero_gen_stats} = Utilities.Statistics.lookup(0)
+# {_, fivehundred_gen_stats} = Utilities.Statistics.lookup(500)
+# {_, onethousand_gen_stats} = Utilities.Statistics.lookup(1000)
+# IO.inspect(zero_gen_stats.average_tiger)
+# IO.inspect(fivehundred_gen_stats.average_tiger)
+# IO.inspect(onethousand_gen_stats.average_tiger)
+
+# genealogy = Utilities.Genealogy.get_tree()
+# {:ok, dot} = Graph.Serializers.DOT.serialize(genealogy)
+# {:ok, dotfile} = File.open("tiger_simulation.dot", [:write])
+# :ok = IO.binwrite(dotfile, dot)
+# :ok = File.close(dotfile)
