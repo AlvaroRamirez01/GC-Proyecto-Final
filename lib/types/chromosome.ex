@@ -27,6 +27,7 @@ defmodule Types.Chromosome do
         }
 
   @enforce_keys :genes
+  @derive {Inspect, only: [:genes, :fitness, :age]}
   defstruct [
     :genes,
     id: Base.encode16(:crypto.strong_rand_bytes(64)),
