@@ -77,7 +77,8 @@ defmodule Toolbox.Crossover do
     {%Chromosome{parent_1 | genes: c1}, %Chromosome{parent_2 | genes: c2}}
   end
 
-  def whole_arithmetic_crossover(parent_1, parent_2, alpha, _opts \\ []) do
+  def whole_arithmetic_crossover(parent_1, parent_2, opts \\ []) do
+    alpha = Keyword.get(opts, :parent_porcentage, 0.5)
     {c1, c2} =
       parent_1.genes
       |> Enum.zip(parent_2.genes)
