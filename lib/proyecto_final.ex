@@ -63,7 +63,7 @@ defmodule Genetics do
 
   def initialize(genotype, opts \\ []) do
     population_size = Keyword.get(opts, :population_size, 100)
-    population = for _ <- 1..population_size, do: genotype.(opts)
+    population = for i <- 0..population_size - 1, do: genotype.(Keyword.put(opts, :index, i))
     # IO.gets("Population: #{inspect(population)}\nPress Enter to continue...")
     Utilities.Genealogy.add_chromosomes(population)
     population
