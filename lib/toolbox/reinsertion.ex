@@ -9,6 +9,7 @@ defmodule Toolbox.Reinsertion do
   def pure(_parents, offspring, _leftover, _opts \\ []), do: offspring
 
   def elitist(parents, offspring, leftover, opts \\ []) do
+    parents = parents |> Enum.flat_map(&Tuple.to_list/1)
     old = parents ++ leftover
     reinsertion_rate = Keyword.get(opts, :reinsertion_rate, 0.2)
     n = floor(length(old) * reinsertion_rate)
