@@ -1,0 +1,11 @@
+strict digraph {
+    946940784[label="#Types.Chromosome<genes: [49.3, 18.1, 245.0, 6811.0], fitness: 0, age: 1, ...>"]
+    1821489641[label="#Types.Chromosome<genes: [52.5, 17.35, 235.5, 6099.5], fitness: 0, age: 1, ...>"]
+    3229529883[label="#Types.Chromosome<genes: [55.7, 16.6, 226.0, 5388.0], fitness: 0, age: 0, ...>"]
+    3689907798[label="#Types.Chromosome<genes: [49.3, 18.1, 245.0, 6811.0], fitness: 0, age: 0, ...>"]
+    3769436152[label="#Types.Chromosome<genes: [52.5, 17.35, 235.5, 6099.5], fitness: 0, age: 0, ...>"]
+    3976423605[label="#Types.Chromosome<genes: [55.7, 16.6, 226.0, 5388.0], fitness: 0, age: 1, ...>"]
+    946940784 -> 3769436152 [weight=1]
+    1821489641 -> 3769436152 [weight=1]
+    3976423605 -> 3769436152 [weight=1]
+}
