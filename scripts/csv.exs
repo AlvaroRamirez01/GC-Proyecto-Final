@@ -11,7 +11,6 @@ defmodule CsvManipulator do
   end
 end
 
-# To run the script
 input_file = "datasets/palmerpenguins_extended.csv"
 output_file = "datasets/cromosomas.csv"
 CsvManipulator.run(input_file, output_file)

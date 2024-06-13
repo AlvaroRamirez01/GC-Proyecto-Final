@@ -33,6 +33,7 @@ defmodule Toolbox.Mutation do
       |> Enum.map(fn x -> (mu - x) * (mu - x) end)
       |> Enum.sum()
       |> Kernel./(length(chromosome.genes))
+      # |> :math.sqrt()
 
     genes =
       chromosome.genes

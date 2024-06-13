@@ -86,8 +86,8 @@ island_data =
 
 initial_data = initial_data |> Map.merge(island_data)
 
-island = IO.gets("Inserta el nombre de la isla (biscoe, dream, torgensen): ") |> IO.chardata_to_string()
-island = case String.trim(island) do
+island = IO.gets("Inserta el nombre de la isla (biscoe, dream, torgensen): ")
+island = case String.trim(IO.chardata_to_string(island)) do
   "biscoe" -> :biscoe
   "dream" -> :dream
   "torgensen" -> :torgensen
