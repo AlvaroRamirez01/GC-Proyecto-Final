@@ -64,7 +64,12 @@ Ahora para ejecutar el código deberán de hacer lo siguiente:
 mix run scripts/penguin_simulation.exs
 ```
 
+## Presentación y Reporte del proyecto
 
+Los documentos requeridos para la entrega los pueden consultar en la carpeta raíz, se llaman `Presentacion_Proyecto_Final` y `Proyecto Final.pdf`, se les deja unos link para una manera mas practica.
+
+| [Presentación](./Presentacion_Proyecto_Final.pdf) | [Reporte escrito](./Proyecto%20Final.pdf) |
+| ---------------------------------------------- | -------------------------------------- |
 
 ## Licencia
 
